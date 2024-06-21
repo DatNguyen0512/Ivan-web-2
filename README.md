@@ -1,4 +1,5 @@
-Web Application Development Project
+**Web Application Development Project**
+
 This project showcases various techniques used in the design and implementation of web applications. The project leverages development environments such as Dreamweaver, Visual Studio, Eclipse, NetBeans, and SQL Management Studio to create a comprehensive web application. Below is a detailed overview of the technologies and methodologies used in this project.
 
 Technologies and Tools

@@ -1,0 +1,12 @@
+SMAP
+insertPhotoAPI_jsp.java
+JSP
+*S JSP
+*F
++ 0 insertPhotoAPI.jsp
+webAPIs/insertPhotoAPI.jsp
+*L
+1,9:47
+15,27:61
+41,2:88
+*E

@@ -1,0 +1,155 @@
+/* This rule makes everything use border-box sizing which is desireable. With border-box sizing, 
+        padding is not added to the width. For example, if you make the footer 100% and it has some padding, 
+        you'll see a horizontal because the footer becomes a little wider than 100%                            */
+* { 
+    box-sizing: border-box;
+}
+html, body {  
+                margin:0; 
+                padding-top: 3rem;
+            }
+
+body { 
+    margin: 0.125rem;                   /* no white border around browser window */
+    font-family: cursive;    /* no tails on the font like Times New Roman */
+    background-color: #47637B;   /* light grey - will show through the content area */
+    
+}
+
+#titleNav {
+
+    position: fixed; 
+    top:0rem;
+    left:0rem;
+    width:100%;  /* changing to position fixed, you need to add 100% if you want to fill the width */
+
+    /* the next two rules will layout the title followed by the nav side by side in a row */
+    display:flex; 
+    flex-direction: column; 
+    text-decoration:none;
+    padding: 0.5rem;
+    background-color:#8A3A30;
+    font-family: serif;
+    
+    font-weight: bold;
+    
+    /* give a little "3D"  effect to the edges of titleNav and footer */
+    box-shadow: 0px 0px 5px black;  
+    
+}
+
+#title  { 
+    padding:0.75rem;
+    padding-bottom: 0rem;
+    padding-right: 1rem;
+    font-size:2rem;
+    font-weight: bold;
+    letter-spacing: 0.2rem; 
+    border: 0.125rem solid black;
+    white-space: nowrap;
+}
+
+#nav { 
+    font-size: 1rem;
+    font-weight: bold;
+    text-align:right;
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+
+    white-space: nowrap;  /* don't allow nav links to wrap */
+}
+
+#nav a:link {
+  color: #FF0000;
+}
+
+#nav a:visited {
+  color: #00FF00;
+}
+
+#nav a:hover {
+  color: #FF00FF;
+}
+
+#content {
+    padding: 1rem;
+    text-decoration:none;
+    padding-top: 12rem;
+    padding-bottom: 3.75rem;
+    font-size: 1.15rem;
+    line-height: 2rem; 
+    padding-top:7rem; /* make sure fixed titleNav does not cover up any content in mobile */
+}
+
+#content a:link {
+  color: #FF0000;
+}
+
+#content a:visited {
+  color: #00FF00;
+}
+
+#content a:hover {
+  color: #FF00FF;
+}
+
+
+
+#footer{
+    
+    position: fixed;
+    bottom: 0px; 
+    left: 0px; 
+    z-index: 1; 
+
+    background-color:#B1B6A6;
+    color: white; 
+    width:100%;
+    text-align:center;	
+    box-shadow: 0px 0px 5px #888888;  
+
+    padding: 0.5rem;
+
+    font-size: 1rem;
+    text-align: center;
+}
+
+.indent {
+    margin-left: 1.5rem;
+}
+
+pre {
+    margin-bottom:1.5rem;
+    margin-right: 2rem;
+    margin-left: 1rem;
+    line-height:1.25rem;
+    font-size: 0.95rem;
+
+    padding:0.5rem;
+    padding-left:0rem;
+    background-color: #CCCCDD; 
+
+    border-radius: 0.25rem;
+    box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem rgba(0,0,0,0.4);
+}
+
+/* when a ul is right after a p, make the ul have a negative top margin.*/
+p + ul { 
+   margin-top:-1rem;
+}
+
+/* desktop only */
+@media only screen and (min-width: 40rem) { 
+
+    /* in desktop the titleNav is not as tall, so less top margin needed to prevent titleNav from hiding top of for content */
+    #content {
+        padding-top:4.5rem; /* less padding is needed in desktop to make sure fixed titleNav does not cover up any content */
+    }
+
+    #titleNav {
+        /* flex attributes */
+        flex-direction: row;
+        justify-content: space-between; /* flex attribute will push title left and nav right, with "space between" */
+    }
+}

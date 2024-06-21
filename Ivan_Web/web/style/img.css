@@ -1,0 +1,27 @@
+/*
+CSS file naming convention says all rules in this file need 
+to start with a class that's the same names as the CSS file.
+*/
+
+.img {
+    background-color: lightblue;
+    border-radius: 8px;
+    padding: 0.25rem;
+    margin: 1rem;
+    border: solid black;
+}
+.img button {
+    background-color:red;
+    font-family: cursive;
+}
+body { 
+    margin: 0.125rem;                   /* no white border around browser window */
+    font-family: cursive;    /* no tails on the font like Times New Roman */
+    background-color: #47637B;   /* light grey - will show through the content area */
+    
+}
+
+.img imgFooter{
+    font-weight: bold;
+    font-family: cursive;
+}

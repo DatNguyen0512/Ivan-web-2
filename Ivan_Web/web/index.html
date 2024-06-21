@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- HTML comments must be like this... -->
+<html>
+    <head>
+        <title>Photography's bio</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="shortcut icon" href="icons/smiley.png" />  
+
+        <link href="style/main.css" rel="stylesheet" type="text/css" />  
+        <!--link href="style/NavRouter.css" rel="stylesheet" type="text/css" -->  
+        <link href="style/img.css" rel="stylesheet" type="text/css" /> 
+        <link rel="stylesheet" href="style/myNavRouter.css" />
+        <link href="style/clickSort.css" rel="stylesheet" type="text/css" />  
+        <link href="style/findActivity.css" rel="stylesheet" type="text/css" />
+        <link href="style/editArea.css" rel="stylesheet" type="text/css" />  
+    </head>
+    <body>
+        <div id="titleNav">
+            <div id="title">
+                IVAN'S PHOTOGRAPHY
+            </div>
+            <div id="nav">
+
+            </div>
+        </div>
+        <div id="content">
+
+            <!-- HTML comment: 
+                The content div is empty. It will get content "injected into it"
+                by the NavRouter component.
+            -->
+        </div> <!-- end of content area -->
+        <div id="footer">
+            Ivan D. Nguyen
+        </div>
+        <script>
+            // Prevent browser from (globally) auto-declaring
+            // any referenced variable that was never declared.
+            "use strict";
+        </script>
+
+        <!-- Suggest you keep these in the same order as you see them in the NB project pane --> 
+        <script src="js/reusable/MakeNavRouter.js"></script>
+        <script src="js/reusable/MakeImg.js"></script>
+        <script src="js/reusable/MakeClickSortTable.js"></script>
+        <script src="js/reusable/SortableTableUtils.js"></script>
+        <script src="js/reusable/ajax.js"></script>
+        <script src="js/reusable/MakeEditArea.js"></script>
+        <script src="js/reusable/Utils.js"></script>
+        
+        <script src="icons/sortUpDown16.png"></script>
+        <script src="js/content/blogContent.js"></script>
+        <script src="js/content/homeContent.js"></script>
+        <script src="js/content/registerContent.js"></script>
+        <script src="js/content/imgContent.js"></script>
+        <script src="js/content/userContent.js"></script>
+        <script src="js/content/photoContent.js"></script>
+        <script src="js/content/account.js"></script>
+        <script src="js/content/liveUserContent.js"></script>
+        <script src="js/content/livePhotoContent.js"></script>
+        <script src="js/content/webUserMods.js"></script>  <!-- New -->
+        <script src="js/content/photoMods.js"></script> 
+        <script>
+
+            // Home | Account | Search | Tutorial | Blog
+
+            var myNavList = [
+
+                // action attribute is a function name - no quotes aroudnd home.
+                {linkText: "Home", linkURL: "#/home", action: homeContent},
+                {
+                    header: "Account",
+                    subMenu: [
+
+                        // These links show up in nav bar but not functional because 
+                        // no linkURL and action.
+                        {linkText: "Register", linkURL: "#/userInsert", action: webUserMods.insert}, // Link shows up in nav bar but not functional because no linkURL and no action.
+                        {linkText: "Log On", linkURL: "#/logon", action: account.logon},
+                        {linkText: "Log Off", linkURL: "#/logoff", action: account.logoff},
+                        {linkText: "Profile", linkURL: "#/profile", action: account.getProfile}
+                    ]
+                },
+                {
+                    header: "Search",
+                    subMenu: [
+                        {linkText: "Live User List", linkURL: "#/userList", action: liveUserContent},
+                        {linkText: "Live Photo List", linkURL: "#/photoList", action: livePhotoContent},
+                        {linkText: "Users API", linkURL: "#/usersAPI", action: "webAPIs/listUsersAPI.jsp"},
+                        {linkText: "Photo API", linkURL: "#/photoAPI", action: "webAPIs/listPhotoAPI.jsp"},
+                        {linkText: "ClickSort Users", linkURL: "#/clickSortUsers", action: userContent},
+                        {linkText: "ClickSort Photos", linkURL: "#/clickSortPhotos", action: photoContent},
+                        {linkText: "Make Photos", linkURL: "#/makeImg", action: imgContent},
+                        {linkText: "Slide Show"},
+                        {linkText: "Click Sort"}
+                    ]
+                },
+
+                {
+                    header: "Tutorial",
+                    subMenu: [
+                        {linkText: "Proposal", linkURL: "#/proposal", action: "tutorial/proposal.pdf"},
+                        {linkText: "Proof Of Concept", linkURL: "#/tutPOC", action: "tutorial/poc.html"},
+                        {linkText: "Demo", linkURL: "#/tutDemo", action: "tutorial/download/demo.html"},
+                        {linkText: "Tutorial Home", linkURL: "#/tutHome", action: "tutorial/index.html"}
+                    ]
+                },
+
+                // action attribute is a function name - no quotes around blog.
+                {linkText: "Blog", linkURL: "#/blog", action: blogContent}
+                
+            ];
+
+            var myNav = MakeNavRouter({
+                navId: "nav", // this is where the nav bar will be injected
+                navList: myNavList, // the list of link objects (linkText, linkURL, actions)
+                contentId: "content", // the id where content is to be injected
+                startLink: "#/home"     // routing will set this as the first link. 
+            });
+            
+            myNav.addRoute({
+                linkURL: "#/photoInsert",
+                action: photoMods.insert
+            });
+            
+            myNav.addRoute({
+                linkURL: "#/userUpdate",
+                action: webUserMods.update
+            });
+            
+             myNav.addRoute({
+                linkURL: "#/photoUpdate",
+                action: photoMods.update
+            });
+
+        </script>
+    </body>
+</html>
